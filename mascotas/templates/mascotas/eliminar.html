@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Eliminar Mascotas</h2>
+<p>¿Seguro que querés eliminar a <strong>{{ dueno.nombre_completo }}</strong>?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'listar_mascotas' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Listado de Especies</h2>
+<a href="{% url 'crear_especie' %}" class="btn btn-success mb-2">Agregar Especie</a>
+<table class="table table-bordered">
+    <thead>
+        <tr><th>Nombre</th><th>Acciones</th></tr>
+    </thead>
+    <tbody>
+        {% for especie in especies %}
+        <tr>
+            <td>{{ especie.nombre }}</td>
+            <td>
+                <a href="{% url 'editar_especie' especie.id %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url 'eliminar_especie' especie.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

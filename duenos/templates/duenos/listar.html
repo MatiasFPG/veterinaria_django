@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Listado de Dueños</h2>
+<a href="{% url 'crear_dueno' %}" class="btn btn-success mb-2">Agregar Dueño</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th><th>Teléfono</th><th>Email</th><th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dueno in duenos %}
+        <tr>
+            <td>{{ dueno.nombre_completo }}</td>
+            <td>{{ dueno.telefono }}</td>
+            <td>{{ dueno.correo }}</td>
+            <td>
+                <a href="{% url 'editar_dueno' dueno.id %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url 'eliminar_dueno' dueno.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
